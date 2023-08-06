@@ -2,6 +2,18 @@
 
 {% block content %}
 
-<h1> Hi! </h1>
+{% load static %}
+
+  
+<div class="container-fluid p-5 text-center">
+  <img class="img-fluid p-2" src="{% static 'MG_2545-1680x1050.jpg' %}">
+  <div class="row">
+    <h1>Building a household of faith on a foundation of grace</h1>
+  </div>
+  <div class="row p-4">
+    <h1 class="fw-lighter">Join us for worship this <strong>Sunday</strong></h1>
+  </div>
+</div>
+
 
 {% endblock %}
