@@ -6,12 +6,3 @@ tasks:
   
   - name: migrate
     before: venv/bin/python manage.py migrate # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
-
-# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
-ports:
-  - name: Frontend
-    description: Port 8000 for the frontend
-    port: 8000
-    onOpen: open-preview
-
-# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
