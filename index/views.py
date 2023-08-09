@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request,"index.html", {"blank":"hi"})
+
+def ourvision(request):
+    return render(request,"ourvision.html", {"blank":"hi"})
