@@ -1,1 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  
+
+{% block content %}
+
+{% load static %}
+
+<div class="container-fluid p-5 bg-dark text-white text-center">
+    <h1>Our Vision</h1>
+</div>
+
+<div class="text-center p-5 col">
+    <p>{{ Vision }}</p>
+</div>
+
+{% endblock %}

@@ -9,5 +9,5 @@ def index(request):
 
 def ourvision(request):
     messages = message.objects.get(pk=1)
-    print(messages.ourvision)
+    # print(messages.ourvision)
     return render(request,"ourvision.html", {"Vision":messages.ourvision})
