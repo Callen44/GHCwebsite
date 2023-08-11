@@ -6,10 +6,12 @@ from markdown import markdown
 # Create your views here.
 
 def index(request):
-    return render(request,"index.html", {"blank":"hi"})
+    messages = message.objects.get(pk=1)
+    visiontitle = messages.ourvisiontitle
+    print(visiontitle)
+    return render(request,"index.html", {"visiontitle":visiontitle})
 
 def ourvision(request):
     messages = message.objects.get(pk=1)
     messages = markdown(str(messages.ourvision))
-    # print(messages.ourvision)
     return render(request,"ourvision.html", {"Vision":messages})

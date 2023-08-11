@@ -4,4 +4,5 @@ from django.db import models
 
 
 class message(models.Model):
+    ourvisiontitle = models.CharField(max_length=500)
     ourvision = models.TextField()
