@@ -14,4 +14,4 @@ def index(request):
 def ourvision(request):
     messages = message.objects.get(pk=1)
     messages = markdown(str(messages.ourvision))
-    return render(request,"ourvision.html", {"Vision":messages})
+    return render(request,"aboutus.html", {"Vision":messages})
