@@ -14,4 +14,6 @@ def ourvision(request):
     return render(request,"aboutus.html", {"Vision":messages})
 
 def visit(request):
-    return render(request,"visit.html")
+    messages = message.objects.get(pk=1)
+    messages = markdown(str(messages.visitmessage))
+    return render(request,"visit.html", {"Visit":messages})
