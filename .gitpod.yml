@@ -1,5 +1,2 @@
-# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
-tasks:
-  - name: Make venv
-    before: python3 -m venv venv && venv/bin/pip install -r requirements.txt # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
-    init: venv/bin/python manage.py migrate
+image:
+    file: .gitpod.dockerfile
