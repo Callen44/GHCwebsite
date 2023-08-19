@@ -6,4 +6,21 @@ services:
     image: result/latest
     ports:
       - 127.0.0.1:8000:8000
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  database:
     
