@@ -6,6 +6,8 @@ services:
       POSTGRES_DB: myuser
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
+    volumes:
+      - database:/var/lib/postgresql/data
   web:
     build: .
     command: bash -c "sleep 1 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
@@ -20,4 +22,9 @@ services:
       POSTGRES_PASSWORD: mypassword
   broker:
     image: redis
+  workers:
+    build: .
+    command: celery -A GHCwebsite worker -l INFO
     
+volumes:
+  database:
