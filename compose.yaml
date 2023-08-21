@@ -31,6 +31,12 @@ services:
   workers:
     build: .
     command: celery -A GHCwebsite worker -l INFO
+    environment:
+      POSTGRES_DB: myuser
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    depends_on:
+      - broker
     
 volumes:
   database:
