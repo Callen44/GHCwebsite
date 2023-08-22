@@ -18,4 +18,4 @@ class SermonsConfig(AppConfig):
         next_sunday = now + timedelta(days=(6 - now.weekday()))
         next_sunday = next_sunday.replace(hour=12, minute=0, second=0, microsecond=0)
 
-        cel_reset_db.apply_async(eta=timezone.now())
+        cel_reset_db.apply_async(eta=next_sunday)
