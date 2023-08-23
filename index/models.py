@@ -4,5 +4,5 @@ from django.db import models
 
 
 class message(models.Model):
-    visitmessage = models.TextField()
-    ourvision = models.TextField()
+    visitmessage = models.TextField(default="# hi")
+    ourvision = models.TextField(default="# hi")
