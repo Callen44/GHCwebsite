@@ -21,7 +21,11 @@ def reset_db():
     channelID = 'UCoMOgaiSCktWEk2CZ7e-aLQ' # this is the @GraceHeritageChurch channel id
     request_url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&channelId="+channelID+"&part=snippet,id&order=date"
 
+    print(request_url)
     print("log: making request - " + request_url)
     with urllib.request.urlopen(request_url) as response:
         data = json.loads(response.read().decode())
         print(data)
+
+if __name__ == "__main__":
+    reset_db()

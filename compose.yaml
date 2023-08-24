@@ -30,7 +30,7 @@ services:
     image: redis
     volumes:
       - redis_data:/data
-  workers:
+  worker:
     build: .
     command: celery -A GHCwebsite worker -l INFO
     environment:
