@@ -1,3 +1,6 @@
+import urllib.request
+import json
+
 def reset_db():
     print("reset_db_log: starting")
     # You need to make a file called apinfo.py and add a variable called
@@ -8,7 +11,7 @@ def reset_db():
     # check that there is a key provided
     try:
         from . import apinfo
-        y = apinfo.YOUTUBE_API_KEY
+        key = apinfo.YOUTUBE_API_KEY
     except:
         raise KeyError('ERROR: youtube API key required!')
 
@@ -16,3 +19,9 @@ def reset_db():
     # videos made by the youtube channel @GraceHeritageChurch
 
     channelID = 'UCoMOgaiSCktWEk2CZ7e-aLQ' # this is the @GraceHeritageChurch channel id
+    request_url = "https://www.googleapis.com/youtube/v3/search?key="+key+"&channelId="+channelID+"&part=snippet,id&order=date"
+
+    print("log: making request - " + request_url)
+    with urllib.request.urlopen(request_url) as response:
+        data = json.loads(response.read().decode())
+        print(data)
