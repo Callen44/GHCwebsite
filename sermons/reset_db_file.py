@@ -1,5 +1,6 @@
 import urllib.request
 import json
+from .models import apikey
 
 def reset_db():
     print("reset_db_log: starting")
@@ -10,8 +11,9 @@ def reset_db():
 
     # check that there is a key provided
     try:
-        from . import apinfo
-        key = apinfo.YOUTUBE_API_KEY
+        key = apikey.objects.first()
+        key = str(key.key)
+        print("log: key is "+key)
     except:
         raise KeyError('ERROR: youtube API key required!')
 
