@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from .models import apikey
+from .models import apikey, video
 
 def reset_db():
     print("reset_db_log: starting")
