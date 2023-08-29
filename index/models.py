@@ -6,3 +6,6 @@ from django.db import models
 class message(models.Model):
     visitmessage = models.TextField(default="# hi")
     ourvision = models.TextField(default="# hi")
+
+class system_metatdata(models.Model):
+    database_healthy = models.BooleanField(default=True)

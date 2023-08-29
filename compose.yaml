@@ -15,8 +15,7 @@ services:
       retries: 30
   web:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-      - .:/code
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     depends_on:
@@ -39,6 +38,17 @@ services:
       POSTGRES_PASSWORD: mypassword
     depends_on:
       - broker
+  setup:
+    build: .
+    command: python manage.py auto_setup
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_DB: myuser
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
     
 volumes:
   database:
