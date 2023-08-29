@@ -19,8 +19,9 @@ class Command(BaseCommand):
             database_health = bool(metadata.database_healty)
         except:
             database_health = False
+        print("debug log: database health is "+ database_health+" responding")
 
-        if database_health:
+        if database_health == False:
             self.refil()
         
         # make a superuser
