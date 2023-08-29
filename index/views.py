@@ -17,3 +17,6 @@ def visit(request):
     messages = message.objects.get(pk=1)
     messages = markdown(str(messages.visitmessage))
     return render(request,"visit.html", {"Visit":messages})
+
+def contactus(request):
+    return render(request,"contactus.html")
