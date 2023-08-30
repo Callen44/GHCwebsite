@@ -19,7 +19,7 @@ class Command(BaseCommand):
             database_health = bool(metadata.database_healty)
         except:
             database_health = False
-        print("debug log: database health is "+ database_health+" responding")
+        print("debug log: database health is "+ str(database_health)+" responding")
 
         if database_health == False:
             self.refil()
