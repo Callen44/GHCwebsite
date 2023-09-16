@@ -6,7 +6,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         
-        #If you want random values, check out the Faker module
         messageblock = message.objects.create(
             visitmessage="# hi",
             ourvision="#hi",

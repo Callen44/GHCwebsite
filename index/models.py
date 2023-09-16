@@ -9,3 +9,4 @@ class message(models.Model):
 
 class system_metatdata(models.Model):
     database_healthy = models.BooleanField(default=True)
+    sermon_updator_on = models.BooleanField(default=False)

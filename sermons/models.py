@@ -7,6 +7,6 @@ class apikey(models.Model):
 class video(models.Model):
     official_name=models.CharField(max_length=200)
     date = models.DateField()
-    vid = models.CharField()
+    vid_url = models.CharField()
     thumbnail_url = models.CharField(max_length=1000)
     biblestudy = models.BooleanField()
