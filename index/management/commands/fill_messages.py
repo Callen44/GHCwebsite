@@ -9,7 +9,8 @@ class Command(BaseCommand):
         #If you want random values, check out the Faker module
         messageblock = message.objects.create(
             visitmessage="# hi",
-            ourvision="#hi"
+            ourvision="#hi",
+            id = 1
         )
         messageblock.save()
         print('created messages')

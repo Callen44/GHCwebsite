@@ -4,12 +4,15 @@
 
 {% load static %}
 
-<div class="container-fluid p-5 bg-dark text-white text-center">
-    <h1 class="p-5">Our Vision</h1>
+<div class="bg-light text-dark">
+    <div class="container-fluid p-5 bg-dark text-white text-center">
+        <h1 class="p-5">About us</h1>
+    </div>
+
+    <div class="text-left p-5 col">
+        {{ Vision|safe }}
+    </div>
 </div>
 
-<div class="text-left p-5 col">
-    {{ Vision|safe }}
-</div>
 
 {% endblock %}
