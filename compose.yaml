@@ -25,19 +25,32 @@ services:
       POSTGRES_DB: myuser
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
+    healthcheck:
+      test: ["CMD", "ping localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   broker:
     image: redis
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   worker:
     build: .
-    command: celery -A GHCwebsite worker -l INFO
+    command: celery -A GHCwebsite worker --purge -l INFO
     environment:
       POSTGRES_DB: myuser
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
     depends_on:
-      - broker
+      db:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
   setup:
     build: .
     command: python manage.py auto_setup

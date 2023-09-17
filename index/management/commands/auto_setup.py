@@ -24,15 +24,44 @@ class Command(BaseCommand):
         if database_health == False:
             self.refil()
         
+        # prepare celery
+        self.celeryman()
+
         # make a superuser
         print("making super user")
         os.environ["DJANGO_SUPERUSER_PASSWORD"]=str(12345678)
         print(os.system("python /app/manage.py createsuperuser --noinput --username root --email email@example.com"))
 
-        # mark the new database as 
+        # mark the new database as good
         meta = system_metatdata.objects.create(database_healthy=True, id=1)
         system_metatdata.objects.filter(pk=1).update(database_healthy=True)
 
     def refil(self):
         # this code needs to be callable by diffrent parts of the code
         print(os.system("/app/manage.py fill_messages"))
+    
+    def celeryman(self):
+        print('preparing celery')
+        from datetime import datetime, timedelta
+        from sermons.tasks import cel_reset_db
+        from django.utils import timezone
+        from index.models import system_metatdata
+        import os
+        
+        # check if the task has been scheduled yet
+        metadata = system_metatdata.objects.get(pk=1)
+
+        database_up_to_date = bool(metadata.video_database_uptodate)
+
+        if database_up_to_date:
+            return
+        # schedule the resetting of the database
+
+        # figure out how long until 12:00 on the next sunday,
+        now = datetime.now()
+
+        next_sunday = now + timedelta(days=(6 - now.weekday()))
+        next_sunday = next_sunday.replace(hour=12, minute=0, second=0, microsecond=0)
+
+        cel_reset_db.apply_async(eta=timezone.now())
+        cel_reset_db.apply_async(eta=next_sunday)
