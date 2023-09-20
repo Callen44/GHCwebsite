@@ -66,7 +66,7 @@ def reset_db():
             date=publish_date,
             thumbnail_url=thumbnail_url,
             biblestudy=bible_study,  # Set the biblestudy field based on the pattern match
-            youtubeid=video_id
+            id=video_id
         )
         new_video.save()
 

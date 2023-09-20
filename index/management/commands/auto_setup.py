@@ -47,17 +47,8 @@ class Command(BaseCommand):
         from django.utils import timezone
         from index.models import system_metatdata
         import os
-        
-        # check if the task has been scheduled yet
-        metadata = system_metatdata.objects.get(pk=1)
 
-        database_up_to_date = bool(metadata.video_database_uptodate)
-
-        if database_up_to_date:
-            return
-        # schedule the resetting of the database
-
-        # figure out how long until 12:00 on the next sunday,
+        # figure out how long until 12:00 on the next sunday, and schedule the task
         now = datetime.now()
 
         next_sunday = now + timedelta(days=(6 - now.weekday()))

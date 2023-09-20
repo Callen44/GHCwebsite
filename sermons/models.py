@@ -10,4 +10,4 @@ class video(models.Model):
     # vid_url = models.CharField(max_length=None)
     thumbnail_url = models.CharField(max_length=None)
     biblestudy = models.BooleanField()
-    youtubeid = models.CharField(max_length=None)
+    id = models.CharField(max_length=None, primary_key=True)
