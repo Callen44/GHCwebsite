@@ -11,3 +11,6 @@ class video(models.Model):
     thumbnail_url = models.CharField(max_length=None)
     biblestudy = models.BooleanField()
     id = models.CharField(max_length=None, primary_key=True)
+
+    def __str__(self):
+        return self.official_name

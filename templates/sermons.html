@@ -11,8 +11,24 @@
         <h1 class="p-5">Sermons</h1>
     </div>
 
-    <!-- content -->
-    <div></div>
+    <!-- content-->
+    <div class="text-center p-5">
+        <div class="">
+            {% for video in videos %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ video.thumbnail }}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{video.title}}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">watch (note: add href)</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No videos found.</p>
+            {% endfor %}
+
+        </div>
+    </div>
 </div>
 
 

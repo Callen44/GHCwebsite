@@ -47,7 +47,7 @@ def reset_db():
     for video in videos:
         title = video['snippet']['title']
         video_id = video['snippet']['resourceId']['videoId']
-        thumbnail_url = video['snippet']['thumbnails']['default']['url']
+        thumbnail_url = video['snippet']['thumbnails']['high']['url']
         youtube_url = f'https://www.youtube.com/watch?v={video_id}'
         publish_date = video['snippet']['publishedAt']
 
