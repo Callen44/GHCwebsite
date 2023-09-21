@@ -12,10 +12,10 @@
     </div>
 
     <!-- content-->
-    <div class="text-center p-5">
-        <div class="">
-            {% for video in videos %}
-                <div class="card" style="width: 18rem;">
+    <div class="p-5 text-center">
+        {% for video in videos %}
+            <div class="col-md-4">
+                <div class="card pb-3" style="width: 18rem;">
                     <img src="{{ video.thumbnail }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{video.title}}</h5>
@@ -23,13 +23,11 @@
                         <a href="#" class="btn btn-primary">watch (note: add href)</a>
                     </div>
                 </div>
-            {% empty %}
-                <p>No videos found.</p>
-            {% endfor %}
-
-        </div>
+            </div>
+        {% empty %}
+            <p>No videos found.</p>
+        {% endfor %}
     </div>
 </div>
-
 
 {% endblock%}
