@@ -12,10 +12,10 @@
     </div>
 
     <!-- content-->
-    <div class="p-5 text-center">
+    <div class="row mb-3 text-center">
         {% for video in videos %}
-            <div class="col-md-4">
-                <div class="card pb-3" style="width: 18rem;">
+            <div class="col-md-4 mt-5 themed-grid-col">
+                <div class="card container-sm" style="max-width: 400px;">
                     <img src="{{ video.thumbnail }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{video.title}}</h5>
@@ -28,6 +28,15 @@
             <p>No videos found.</p>
         {% endfor %}
     </div>
+    <!--<div class="p-5 text-center">
+        {% for video in videos %}
+            <div class="col-md-4">
+                
+            </div>
+        {% empty %}
+            <p>No videos found.</p>
+        {% endfor %}
+    </div>-->
 </div>
 
 {% endblock%}
