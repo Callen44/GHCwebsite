@@ -27,6 +27,9 @@ class Command(BaseCommand):
         # prepare celery
         self.celeryman()
 
+        # prepage static files
+        self.staticprep()
+
         # make a superuser
         print("making super user")
         os.environ["DJANGO_SUPERUSER_PASSWORD"]=str(12345678)
@@ -56,3 +59,7 @@ class Command(BaseCommand):
 
         cel_reset_db.apply_async(eta=timezone.now())
         cel_reset_db.apply_async(eta=next_sunday)
+    
+    def staticprep(self):
+        print('preparing static files')
+        os.system("python /app/manage.py collectstatic --noinput -c")

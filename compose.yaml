@@ -15,7 +15,7 @@ services:
       retries: 30
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py boot
     ports:
       - "8000:8000"
     depends_on:
@@ -30,6 +30,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    volumes:
+      - staticfiles:/staticfiles
   broker:
     image: redis
     volumes:
@@ -61,8 +63,11 @@ services:
       POSTGRES_DB: myuser
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
+    volumes:
+      - staticfiles:/staticfiles
 
     
 volumes:
   database:
   redis_data:
+  staticfiles:

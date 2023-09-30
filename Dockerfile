@@ -4,6 +4,10 @@ FROM python
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+RUN apt update
+RUN apt install nginx -y
 COPY . .
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
-EXPOSE 8000
+RUN cp /app/config/nginx.conf /etc/nginx/conf.d
+RUN mkdir /staticfiles
+CMD ["python","manage.py","boot"]
+EXPOSE 80
