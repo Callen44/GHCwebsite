@@ -13,6 +13,4 @@ def index(request):
     for video in videos:
         formatted_videos.append({"id":video.id, "title":video.official_name,"biblestudy":video.biblestudy, "thumbnail":video.thumbnail_url, "date": video.date})
 
-    print(formatted_videos)
-
     return render(request,'sermons.html',{'videos':formatted_videos})
