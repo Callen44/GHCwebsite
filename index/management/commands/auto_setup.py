@@ -8,7 +8,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # setup database    
-        print(os.system("/app/manage.py makemigrations"))
+        print(os.system("/app/manage.py makemigrations index sermons"))
+        print(os.system("/app/manage.py sqlmigrate index 0001"))
+        print(os.system("/app/manage.py sqlmigrate sermons 0002"))
         print(os.system("/app/manage.py migrate"))
 
         # fill data if database metadata says that the database is not healthy
