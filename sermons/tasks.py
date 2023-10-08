@@ -3,7 +3,6 @@
 from celery import shared_task
 from .reset_db_file import reset_db
 from datetime import datetime, timedelta
-from sermons.tasks import cel_reset_db
 from django.utils import timezone
 from index.models import system_metadata
 import os
