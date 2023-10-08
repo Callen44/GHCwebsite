@@ -83,10 +83,10 @@ def prep():
     print("reset_db_log: starting")
 
     # check if updater is on
-    from index.models import system_metatdata
+    from index.models import system_metadata
 
     try:
-        metadata = system_metatdata.objects.get(pk=1)
+        metadata = system_metadata.objects.get(pk=1)
         updator_on = bool(metadata.sermon_updator_on)
     except:
         updator_on = False

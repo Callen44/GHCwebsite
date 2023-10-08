@@ -1,7 +1,7 @@
 import os
 
 from django.core.management.base import BaseCommand, CommandError
-from index.models import system_metatdata
+from index.models import system_metadata
 
 
 class Command(BaseCommand):
@@ -17,7 +17,7 @@ class Command(BaseCommand):
         
         # check if the database is actually healty
         try:
-            metadata = system_metatdata.objects.get(pk=1)
+            metadata = system_metadata.objects.get(pk=1)
             database_health = bool(metadata.database_healty)
         except:
             database_health = False
@@ -38,8 +38,8 @@ class Command(BaseCommand):
         print(os.system("python /app/manage.py createsuperuser --noinput --username root --email email@example.com"))
 
         # mark the new database as good
-        meta = system_metatdata.objects.create(database_healthy=True, id=1)
-        system_metatdata.objects.filter(pk=1).update(database_healthy=True)
+        meta = system_metadata.objects.create(database_healthy=True, id=1)
+        system_metadata.objects.filter(pk=1).update(database_healthy=True)
 
     def refil(self):
         # this code needs to be callable by diffrent parts of the code
@@ -50,7 +50,7 @@ class Command(BaseCommand):
         from datetime import datetime, timedelta
         from sermons.tasks import cel_reset_db
         from django.utils import timezone
-        from index.models import system_metatdata
+        from index.models import system_metadata
         import os
 
         # figure out how long until 12:00 on the next sunday, and schedule the task
