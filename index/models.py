@@ -18,3 +18,7 @@ class contact_request(models.Model):
     name = models.CharField(max_length=1000)
     email = models.CharField(max_length=1000)
     message = models.TextField()
+
+    def __str__(self):
+        name = "name: " + str(self.name) + ", email: " + str(self.email) + ", id: " + str(self.id)
+        return name
