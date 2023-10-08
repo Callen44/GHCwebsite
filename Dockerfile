@@ -6,8 +6,8 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN apt update
 RUN apt install nginx -y
+RUN mkdir /staticfiles
 COPY . .
 RUN cp /app/config/nginx.conf /etc/nginx/conf.d
-RUN mkdir /staticfiles
 CMD ["python","manage.py","boot"]
 EXPOSE 80
