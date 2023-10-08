@@ -4,8 +4,16 @@ from django.db import models
 
 
 class message(models.Model):
-    visitmessage = models.TextField(default="# hi")
-    ourvision = models.TextField(default="# hi")
+    visitmessage = models.TextField(default="""
+                                    # Hi,This is a placeholder, it pastors/developers, change it at /admin. 
+                                    
+                                    If you're a regular user and you see this message please report it to pastors/developers urgently!
+                                    """)
+    ourvision = models.TextField(default="""
+                                    # Hi,This is a placeholder, it pastors/developers, change it at /admin. 
+                                    
+                                    If you're a regular user and you see this message please report it to pastors/developers urgently!
+                                    """)
 
 class system_metadata(models.Model):
     database_healthy = models.BooleanField(default=True)
