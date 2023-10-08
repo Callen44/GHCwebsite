@@ -14,7 +14,7 @@ class system_metadata(models.Model):
 class pastor_email(models.Model):
     email = models.CharField(max_length=1000)
 
-class contact_requests(models.Model):
+class contact_request(models.Model):
     name = models.CharField(max_length=1000)
     email = models.CharField(max_length=1000)
     message = models.TextField()
