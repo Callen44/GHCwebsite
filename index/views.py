@@ -19,4 +19,6 @@ def visit(request):
     return render(request,"visit.html", {"Visit":messages})
 
 def contactus(request):
+    # check if there is any data in the request, then notify the template if it sould show an alert
+
     return render(request,"contactus.html")
