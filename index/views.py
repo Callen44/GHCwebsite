@@ -54,6 +54,6 @@ def contactus(request):
         pass
 
     # schedule a task for the pastors to recieve an email
-    email_pastors_new_message.apply_async(eta=timezone.now())
+    email_pastors_new_message.apply_async((new_contact_request.id),eta=timezone.now())
 
     return render(request,"contactus.html", {"Message":msg,"Success":success})
