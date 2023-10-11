@@ -169,9 +169,9 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io','http://localhost:8000']
 
-# Test email settings, These MUST be changed before production
+# Test email settings, These MUST be changed before production, Use your own
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = 'be12d463444ec3'
-EMAIL_HOST_PASSWORD = '26d4435328d9b4'
+EMAIL_HOST_USER = '****'
+EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = '2525'
 
