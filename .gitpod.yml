@@ -5,6 +5,7 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: docker compose build && docker compose pull
+  - name: Setup, Install & Build
+    before: docker compose build && docker compose up
 
 
