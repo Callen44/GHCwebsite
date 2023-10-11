@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import message, contact_request
 from markdown import markdown
+from .tasks import email_pastors_new_message
+from django.utils import timezone
 
 # Create your views here.
 
@@ -50,5 +52,8 @@ def contactus(request):
         success = True
     except:
         pass
+
+    # schedule a task for the pastors to recieve an email
+    email_pastors_new_message.apply_async(eta=timezone.now())
 
     return render(request,"contactus.html", {"Message":msg,"Success":success})
