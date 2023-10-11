@@ -18,22 +18,31 @@
             <p class="fw-bold">Grace Heritage Church: <a style="text-decoration: none;" href="https://www.google.com/maps/dir//1345+Annalue+Dr%2C+Auburn+AL+36830/">1345 Annalue Dr. Auburn, AL 36830</a></p>
         </div>
         <!-- the actual form -->
-        <div class="ps-5">
+        <div class="p-5">
+            <!-- if an alert needs to be shown then it will be inside the div -->
+            <div>
+              {% if Success %}
+              <!-- tell the user all went well -->
+              <div class="alert alert-success" role="alert">
+                {{ Message }}
+              </div>
+              {% endif %}
+            </div>
             <h1>Contact Form</h1>
             <p class="text-danger">all feilds required</p>
             <form method="post" action="/contactus/">
                 {% csrf_token %}
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control rounded" id="name" maxlength="1000" required>
+                  <input type="text" class="form-control rounded" id="name" name="name" maxlength="1000" required>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control rounded" id="email" maxlength="1000" required>
+                  <input type="email" class="form-control rounded" id="email" name="email" maxlength="1000" required>
                 </div>
                 <div class="mb-3">
                   <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control rounded" id="message" rows="3" required></textarea>
+                  <textarea class="form-control rounded" name="message" id="message" rows="3" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import message
+from .models import message, contact_request
 from markdown import markdown
 
 # Create your views here.
@@ -21,4 +21,34 @@ def visit(request):
 def contactus(request):
     # check if there is any data in the request, then notify the template if it sould show an alert
 
-    return render(request,"contactus.html")
+    # name or email can't be too long (1000 characters) if there is no post data then don't even bother checking it
+    
+    # Use try to figure out if there even is any data
+    
+    try:
+        # if name and email were detected in the post data then this code will be successful
+        blank = request.POST['name']
+        blank = request.POST['email']
+        blank = request.POST['message']
+    except:
+       # there was no data coming in, send the template to the user with no message
+        return render(request,"contactus.html", {"Message":None, "Success":None})
+
+    # the data was found so we are loading it into the database and scheduling a task to run on celery for notifying pastory
+    msg = None
+    success = None
+
+    # add the contact request to that database and make sure that no error are raised if no data is returned
+    try:
+        new_contact_request = contact_request(
+            name = request.POST['name'],
+            email = request.POST['email'],
+            message = request.POST['message'],
+        )
+        new_contact_request.save()
+        msg = "Success! it may take 5-10 minutes for the pastors to be notified."
+        success = True
+    except:
+        pass
+
+    return render(request,"contactus.html", {"Message":msg,"Success":success})
