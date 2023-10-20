@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: django-app
+  name: ghcwebsite
   labels:
-    app: django
+    app: ghcwebsite
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: django
+      app: ghcwebsite
   template:
     metadata:
       labels:
-        app: django
+        app: ghcwebsite
     spec:
       containers:
         - image: ghcwebsite-web
-          name: django
+          name: ghcwebsite
           ports:
             - containerPort: 8000
               name: gunicorn
