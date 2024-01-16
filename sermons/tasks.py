@@ -12,8 +12,9 @@ import os
 def cel_reset_db():
     try:
         reset_db()
-    except:
+    except Exception as er:
         print('log: error occurred when updating sermon database!!!!! scheduling for next sunday anyway')
+        print('error was: '+ str(er) )
     print('log: task complete, sermons updated, scheduling for next sunday')
 
     # Personal note, I know this should not be commited to the repo
